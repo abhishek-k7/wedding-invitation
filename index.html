@@ -63,7 +63,7 @@
 <body class="royal-bg font-['Montserrat'] text-amber-100/90 antialiased min-h-screen relative overflow-x-hidden">
 
     <div class="fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none opacity-20">
-        <video id="bg-motion-video" class="w-full h-full object-cover" src="video.mp4" loop muted playsinline preload="auto"></video>
+        <video id="bg-motion-video" class="w-full h-full object-cover" src="https://assets.mixkit.co/videos/preview/mixkit-luxury-gold-glitter-particles-background-40019-large.mp4" loop muted playsinline preload="auto"></video>
     </div>
 
     <div id="gate-overlay" class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden gate-container">
@@ -210,7 +210,7 @@
             <div class="rounded-xl border border-amber-500/20 overflow-hidden shadow-2xl h-64 w-full relative bg-stone-900/60 backdrop-blur-sm">
                 <iframe 
                     class="w-full h-full grayscale opacity-75 contrast-125 invert" 
-                    src="https://maps.google.com/maps?q=Shanthi%20Radhakrishnan%20Thirumana%20Maligai,%20Old%20Suramangalam,%20Salem&t=&z=15&ie=UTF-8&iwloc=&output=embed" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.388701292087!2d78.11306387585098!3d11.666963442145893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf016aa7682bb%3A0xe5479ea451adcc3!2sShanthi%20Radhakrishnan%20Thirumana%20Mandapam!5e0!3m2!1sen!2sin!4v1712345678901!5m2!1sen!2sin" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
@@ -218,7 +218,7 @@
             </div>
 
             <div class="pt-1">
-                <a href="https://maps.google.com/?q=Shanthi+Radhakrishnan+Thirumana+Maligai+Old+Suramangalam+Salem" target="_blank" class="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-stone-950 rounded font-bold text-[10px] uppercase tracking-[0.2em] hover:brightness-110 active:scale-95 transition-all shadow-xl cursor-pointer">
+                <a href="https://maps.app.goo.gl/9uK2u8fM7qJ5q8yQ6" target="_blank" class="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-stone-950 rounded font-bold text-[10px] uppercase tracking-[0.2em] hover:brightness-110 active:scale-95 transition-all shadow-xl cursor-pointer">
                     Get Directions
                 </a>
             </div>
@@ -232,20 +232,17 @@
     </div>
 
     <script>
-        // 1. Unlocks gate components, starts audio track, and plays background loop video
         function triggerGateOpening() {
             document.getElementById('gate-left').classList.add('gate-open-left');
             document.getElementById('gate-right').classList.add('gate-open-right');
             document.getElementById('gate-seal').style.transform = 'scale(0)';
             document.getElementById('gate-seal').style.opacity = '0';
             
-            // Play audio file
             const targetAudio = document.getElementById('bg-media-track');
             if (targetAudio) {
                 targetAudio.play().catch((err) => console.log("Audio safe autoplay handled: ", err));
             }
 
-            // Play background animation video safely
             const targetVideo = document.getElementById('bg-motion-video');
             if (targetVideo) {
                 targetVideo.play().catch((err) => console.log("Video track play initialized: ", err));
@@ -265,7 +262,6 @@
             }, 1400);
         }
 
-        // 2. Dynamic target deadline countdown counter calculation loop
         const targetEventDate = new Date("August 9, 2026 11:30:00").getTime();
         
         const calculationLoop = setInterval(() => {
@@ -282,7 +278,6 @@
             document.getElementById("secs-val").innerText = String(Math.floor((timeDelta % (1000 * 60)) / 1000)).padStart(2, '0');
         }, 1000);
 
-        // 3. Viewport tracking observer framework
         function initializeIntersectionObservers() {
             const targets = document.querySelectorAll('.reveal-section');
             const observerInstance = new IntersectionObserver((entries) => {
