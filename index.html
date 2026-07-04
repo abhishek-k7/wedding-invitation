@@ -66,8 +66,9 @@
 
     <!-- BACKGROUND MOTION VIDEO PLAYER LAYER -->
     <div class="fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none opacity-20">
-        <!-- Pointed directly to your uploaded video asset -->
-        <video id="bg-motion-video" class="w-full h-full object-cover" src="video.mp4" loop muted playsinline preload="auto"></video>
+        <video id="bg-motion-video" class="w-full h-full object-cover" loop muted playsinline autoplay preload="auto">
+            <source src="video.mp4" type="video/mp4">
+        </video>
     </div>
 
     <!-- 1. CINEMATIC INTERACTIVE PORTAL GATE OVERLAY -->
@@ -224,6 +225,7 @@
                 <p class="text-[10px] text-amber-200/40 uppercase tracking-wider max-w-md mx-auto">Shanthi Radhakrishnan Thirumana Maligai, Old Suramangalam, Salem, Tamil Nadu</p>
             </div>
 
+            <!-- Integrated Active Map View Area -->
             <div class="rounded-xl border border-amber-500/20 overflow-hidden shadow-2xl h-64 w-full relative bg-stone-900/60 backdrop-blur-sm">
                 <iframe 
                     class="w-full h-full grayscale opacity-75 contrast-125 invert" 
