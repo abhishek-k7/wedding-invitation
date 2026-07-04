@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding Celebration of Mizba & Shahid</title>
-    <!-- Tailwind CSS for fluid modern layout scaffolding -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Premium Google Typography Configurations -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -14,7 +12,7 @@
     <style>
         html { scroll-behavior: smooth; }
         
-        /* Deep luxury royal palette gradient canvas overlay */
+        /* Deep fallback background gradient canvas overlay */
         .royal-bg {
             background: linear-gradient(135deg, #1b0e26 0%, #0d161a 50%, #13200f 100%);
         }
@@ -25,12 +23,12 @@
             border-top-right-radius: 9rem;
         }
 
-        /* Perspective layer hosting the interactive gate mechanisms */
+        /* 3D Gate Architecture Mechanics */
         .gate-container {
             perspective: 1200px;
+            -webkit-perspective: 1200px;
         }
 
-        /* Hardware accelerated gate kinematics */
         .gate-leaf-left {
             transform-origin: left center;
             transition: transform 1.8s cubic-bezier(0.45, 0, 0.55, 1), opacity 1.5s ease-in-out;
@@ -40,17 +38,17 @@
             transition: transform 1.8s cubic-bezier(0.45, 0, 0.55, 1), opacity 1.5s ease-in-out;
         }
 
-        /* Applied states for gate reveal */
+        /* Applied portal door clearance actions */
         .gate-open-left {
-            transform: rotateY(-110deg) translateX(-30%);
-            opacity: 0;
+            transform: rotateY(-110deg) translateX(-30%) !important;
+            opacity: 0 !important;
         }
         .gate-open-right {
-            transform: rotateY(110deg) translateX(30%);
-            opacity: 0;
+            transform: rotateY(110deg) translateX(30%) !important;
+            opacity: 0 !important;
         }
 
-        /* Scroll reveal system configuration */
+        /* Scroll reveal configuration updates */
         .reveal-section {
             opacity: 0;
             transform: translateY(40px);
@@ -64,10 +62,12 @@
 </head>
 <body class="royal-bg font-['Montserrat'] text-amber-100/90 antialiased min-h-screen relative overflow-x-hidden">
 
-    <!-- 1. CINEMATIC INTERACTIVE PORTAL GATE OVERLAY -->
+    <div class="fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none opacity-20">
+        <video id="bg-motion-video" class="w-full h-full object-cover" src="video.mp4" loop muted playsinline preload="auto"></video>
+    </div>
+
     <div id="gate-overlay" class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden gate-container">
         
-        <!-- Left Wing Leaf Panel Component -->
         <div id="gate-left" class="absolute inset-y-0 left-0 w-1/2 bg-[#1b0e26] border-r-2 border-amber-500/40 flex items-center justify-end gate-leaf-left shadow-[inset_-20px_0_40px_rgba(0,0,0,0.8)]">
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:24px_24px]"></div>
             <div class="w-full h-full border-y-[16px] border-l-[16px] border-amber-500/10 p-4 flex items-center justify-end">
@@ -75,7 +75,6 @@
             </div>
         </div>
         
-        <!-- Right Wing Leaf Panel Component -->
         <div id="gate-right" class="absolute inset-y-0 right-0 w-1/2 bg-[#1b0e26] border-l-2 border-amber-500/40 flex items-center justify-start gate-leaf-right shadow-[inset_20px_0_40px_rgba(0,0,0,0.8)]">
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:24px_24px]"></div>
             <div class="w-full h-full border-y-[16px] border-r-[16px] border-amber-500/10 p-4 flex items-center justify-start">
@@ -83,11 +82,9 @@
             </div>
         </div>
         
-        <!-- Floating Golden Seal Core Trigger Button -->
         <div id="gate-seal" class="relative z-10 text-center space-y-6 px-4 transition-all duration-1000 ease-in-out max-w-sm">
             <button onclick="triggerGateOpening()" class="w-36 h-36 rounded-full bg-gradient-to-b from-amber-300 via-amber-500 to-amber-700 p-0.5 shadow-[0_0_40px_rgba(245,158,11,0.5)] hover:scale-105 active:scale-95 transition-transform cursor-pointer group">
                 <div class="w-full h-full rounded-full bg-[#160b20] flex flex-col items-center justify-center text-center p-3 border border-amber-400/40 relative">
-                    <div class="absolute inset-0 rounded-full bg-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     <span class="text-sm font-serif text-amber-400 font-bold tracking-widest block mb-1">ما شاء الله</span>
                     <div class="h-[1px] w-12 bg-amber-500/30 my-1"></div>
                     <span class="font-['Cinzel'] text-base tracking-[0.15em] text-white font-bold">M & M</span>
@@ -100,14 +97,11 @@
         </div>
     </div>
 
-    <!-- Hidden audio element for autoplay loop -->
-    <audio id="bg-media-track" src="music.mp3" loop></audio>
+    <audio id="bg-media-track" src="music.mp3" preload="auto" loop></audio>
 
-    <!-- MAIN CONTAINER SCROLL CONTENT -->
-    <div id="scroll-canvas" class="hidden opacity-0 transition-opacity duration-1000 w-full max-w-2xl mx-auto px-4 py-12 md:py-24 space-y-24">
+    <div id="scroll-canvas" class="hidden opacity-0 transition-opacity duration-1000 w-full max-w-2xl mx-auto px-4 py-12 md:py-24 space-y-24 relative z-10">
 
-        <!-- CORE CARD 1: PRIMARY INVITATION TEXT CONTAINER -->
-        <section class="reveal-section islamic-arch border border-amber-500/20 bg-[#140a1d]/70 backdrop-blur-md p-6 md:p-12 text-center relative shadow-[0_15px_50px_rgba(0,0,0,0.6)]">
+        <section class="reveal-section islamic-arch border border-amber-500/20 bg-[#140a1d]/80 backdrop-blur-md p-6 md:p-12 text-center relative shadow-[0_15px_50px_rgba(0,0,0,0.6)]">
             <div class="absolute inset-3.5 islamic-arch border border-amber-500/10 pointer-events-none"></div>
             
             <div class="space-y-8 py-6 relative z-10">
@@ -141,13 +135,12 @@
                 <div class="text-sm font-serif text-amber-400 tracking-[0.2em] pt-2">إِنْ شَاءَ ٱللَّٰهُ</div>
                 
                 <div class="pt-4 text-[10px] tracking-[0.2em] text-amber-500 font-bold uppercase border-t border-amber-500/10 max-w-xs mx-auto">
-                    09 August 2026 &nbsp;&bull;&nbsp; Sunday <br>
+                    09 August 2026  •  Sunday <br>
                     <span class="text-amber-400/60 font-medium text-[9px] tracking-widest">(25 Safar 1448 Hijri)</span>
                 </div>
             </div>
         </section>
 
-        <!-- CORE CARD 2: REALTIME LIVE COUNTDOWN CLOCK -->
         <section class="reveal-section text-center space-y-5">
             <h3 class="font-['Cinzel'] text-[10px] tracking-[0.25em] text-amber-400 uppercase font-bold">Counting Down To The Union</h3>
             
@@ -171,8 +164,7 @@
             </div>
         </section>
 
-        <!-- CORE CARD 3: CALLIGRAPHIC HOLY QURANIC REFLECTION VERSE -->
-        <section class="reveal-section max-w-lg mx-auto bg-gradient-to-b from-[#111d13]/60 to-[#0b1214]/60 border border-emerald-500/20 p-6 md:p-8 text-center rounded-xl shadow-2xl backdrop-blur-sm">
+        <section class="reveal-section max-w-lg mx-auto bg-gradient-to-b from-[#111d13]/80 to-[#0b1214]/80 border border-emerald-500/20 p-6 md:p-8 text-center rounded-xl shadow-2xl backdrop-blur-sm">
             <div class="space-y-4">
                 <span class="text-[9px] font-['Cinzel'] tracking-[0.25em] text-emerald-400 font-bold uppercase block">A Verse To Reflect On</span>
                 <p class="text-xl md:text-2xl font-serif text-white tracking-wide leading-relaxed px-2">
@@ -185,13 +177,11 @@
             </div>
         </section>
 
-        <!-- CORE CARD 4: SCHEDULING TIMELINE BLOCKS -->
         <section class="reveal-section space-y-6">
             <h3 class="text-center font-['Cinzel'] text-[10px] tracking-[0.25em] text-amber-400 uppercase font-bold">Join Us For</h3>
             
-            <div class="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto">
-                <!-- Nikah Layout Arch -->
-                <div class="islamic-arch border border-amber-500/15 bg-[#14091a]/80 p-6 text-center space-y-3 shadow-xl backdrop-blur-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
+                <div class="islamic-arch border border-amber-500/15 bg-[#14091a]/90 p-6 text-center space-y-3 shadow-xl backdrop-blur-sm">
                     <span class="font-['Cinzel'] text-[11px] tracking-widest text-amber-400 font-bold block uppercase">Nikah</span>
                     <div class="font-['Playfair_Display'] text-3xl text-white font-medium">11:30 <span class="text-xs uppercase text-amber-400">AM</span></div>
                     <p class="text-[9px] tracking-[0.15em] text-amber-300/50 uppercase font-bold">Followed by Lunch</p>
@@ -201,8 +191,7 @@
                     </div>
                 </div>
 
-                <!-- Valima Layout Arch -->
-                <div class="islamic-arch border border-amber-500/15 bg-[#0a1413]/80 p-6 text-center space-y-3 shadow-xl backdrop-blur-sm">
+                <div class="islamic-arch border border-amber-500/15 bg-[#0a1413]/90 p-6 text-center space-y-3 shadow-xl backdrop-blur-sm">
                     <span class="font-['Cinzel'] text-[11px] tracking-widest text-amber-400 font-bold block uppercase">Valima</span>
                     <div class="font-['Playfair_Display'] text-3xl text-white font-medium">1:00 <span class="text-xs uppercase text-amber-400">PM</span></div>
                     <p class="text-[9px] tracking-[0.15em] text-amber-300/50 uppercase font-bold">Reception & Lunch</p>
@@ -214,18 +203,16 @@
             </div>
         </section>
 
-        <!-- CORE CARD 5: GOOGLE MAP EMBED -->
         <section class="reveal-section text-center space-y-4 max-w-xl mx-auto">
             <div class="space-y-1">
                 <h3 class="font-['Cinzel'] text-[10px] tracking-[0.25em] text-amber-400 uppercase font-bold">Find Us Here</h3>
                 <p class="text-[10px] text-amber-200/40 uppercase tracking-wider max-w-md mx-auto">Shanthi Radhakrishnan Thirumana Maligai, Old Suramangalam, Salem, Tamil Nadu</p>
             </div>
 
-            <!-- Integrated Active Map View Area -->
             <div class="rounded-xl border border-amber-500/20 overflow-hidden shadow-2xl h-64 w-full relative bg-stone-900/60 backdrop-blur-sm">
                 <iframe 
                     class="w-full h-full grayscale opacity-75 contrast-125 invert"
-                    src="https://maps.google.com/maps?q=Shanthi%20Radhakrishnan%20Thirumana%20Maligai,%20Old%20Suramangalam,%20Salem&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.361957008705!2d78.114753!3d11.668797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf02feffffff9%3A0x6b8eb6a2ba2be486!2sShanthi%20Radhakrishnan%20Thirumana%20Maligai!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
@@ -239,7 +226,6 @@
             </div>
         </section>
 
-        <!-- FOOTER CLOSING -->
         <footer class="text-center space-y-2 pt-12 border-t border-amber-500/10">
             <div class="text-xl font-serif text-amber-400">الحمد لله</div>
             <p class="text-[9px] tracking-[0.2em] text-amber-200/30 uppercase font-medium">Best compliments from friends & relatives</p>
@@ -247,20 +233,29 @@
 
     </div>
 
-    <!-- CODE SYSTEM INTERACTIVE ENGINE SCRIPTS -->
     <script>
-        // 1. Unlocks portal components and triggers sliding entry timelines with music autoplay
+        // 1. Unlocks gate components, starts audio track, and plays background loop video
         function triggerGateOpening() {
+            // Apply hardcoded classes directly to gates for maximum rendering performance
             document.getElementById('gate-left').classList.add('gate-open-left');
             document.getElementById('gate-right').classList.add('gate-open-right');
-            document.getElementById('gate-seal').classList.add('scale-0', 'opacity-0');
+            document.getElementById('gate-seal').style.transform = 'scale(0)';
+            document.getElementById('gate-seal').style.opacity = '0';
             
-            // Seamlessly play the continuous audio on gate click interaction
+            // Play audio file
             const targetAudio = document.getElementById('bg-media-track');
-            targetAudio.play().catch(() => console.log("System audio autoplay restriction handled safely"));
+            if (targetAudio) {
+                targetAudio.play().catch((err) => console.log("Audio safe autoplay handled: ", err));
+            }
+
+            // Play background animation video safely
+            const targetVideo = document.getElementById('bg-motion-video');
+            if (targetVideo) {
+                targetVideo.play().catch((err) => console.log("Video track play initialized: ", err));
+            }
 
             setTimeout(() => {
-                document.getElementById('gate-overlay').classList.add('hidden');
+                document.getElementById('gate-overlay').style.display = 'none';
                 
                 const scrollWrapper = document.getElementById('scroll-canvas');
                 scrollWrapper.classList.remove('hidden');
@@ -273,7 +268,7 @@
             }, 1400);
         }
 
-        // 2. Dynamic target deadline countdown counter
+        // 2. Dynamic event deadline countdown counter calculation loop
         const targetEventDate = new Date("August 9, 2026 11:30:00").getTime();
         
         const calculationLoop = setInterval(() => {
@@ -290,7 +285,7 @@
             document.getElementById("secs-val").innerText = String(Math.floor((timeDelta % (1000 * 60)) / 1000)).padStart(2, '0');
         }, 1000);
 
-        // 3. Viewport tracking animation reveal framework
+        // 3. Viewport tracking observer framework
         function initializeIntersectionObservers() {
             const targets = document.querySelectorAll('.reveal-section');
             const observerInstance = new IntersectionObserver((entries) => {
@@ -299,7 +294,7 @@
                         entry.target.classList.add('active');
                     }
                 });
-            }, { threshold: 0.10 });
+            }, { threshold: 0.05 });
 
             targets.forEach(element => observerInstance.observe(element));
         }
