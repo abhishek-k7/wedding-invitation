@@ -1,0 +1,23 @@
+/* Custom resets and smooth layout rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f5f5f4; /* Stone 100 tint */
+}
+
+/* Emulating the traditional heavy double border from the photo layout */
+main {
+    border-style: double;
+    border-width: 6px;
+    border-color: #111827; /* Dark Gray / Near black */
+}
+
+/* Gentle scale configuration for mobile screen adaptability */
+@media (max-width: 480px) {
+    main {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
