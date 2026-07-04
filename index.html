@@ -4,127 +4,207 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation - Mizba & Shahid</title>
+    <!-- Tailwind CSS for modern structure -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Smooth scrolling and fade-in animation styles */
+        html { scroll-behavior: smooth; }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body class="bg-stone-50 min-h-screen flex items-center justify-center p-4 md:p-8 font-['Montserrat'] text-gray-900 selection:bg-stone-200">
+<body class="bg-stone-100 font-['Montserrat'] text-stone-800 antialiased selection:bg-stone-200">
 
-    <main class="relative w-full max-w-2xl bg-white px-8 py-12 md:px-16 md:py-16 shadow-xl border-4 border-double border-gray-900 m-2">
-        
-        <div class="absolute top-2 right-2 w-28 h-28 opacity-90 pointer-events-none">
-            <svg viewBox="0 0 100 100" class="w-full h-full fill-none stroke-current stroke-[1.5] text-gray-800">
-                <path d="M 60,0 C 70,20 80,30 100,40 M 75,0 C 80,15 85,20 100,25 M 90,0 C 92,10 95,12 100,15" />
-                <circle cx="75" cy="25" r="3" class="fill-current"/>
-                <circle cx="85" cy="15" r="2" class="fill-current"/>
-                <path d="M 100,40 C 85,45 65,35 60,0 C 50,25 25,45 0,50" stroke-dasharray="2,2"/>
-                <path d="M 65,15 C 55,30 60,45 75,50 C 70,35 70,20 65,15 Z" class="fill-stone-100"/>
-            </svg>
+    <!-- 1. INTRO / WELCOME SCREEN (The Cover Envelope) -->
+    <div id="welcome-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-stone-900 text-stone-100 p-6 text-center transition-all duration-1000 ease-in-out">
+        <div class="max-w-md space-y-6 p-8 border border-stone-700 rounded-lg bg-stone-900/50 backdrop-blur-md">
+            <p class="text-xs uppercase tracking-widest text-stone-400">You are cordially invited to the wedding of</p>
+            <h1 class="font-['Cinzel'] text-4xl font-light tracking-wide text-white">Mizba <br><span class="text-xl italic font-['Playfair_Display'] text-stone-400">weds</span><br> Shahid</h1>
+            <p class="text-xs text-stone-400 tracking-wider">Sunday, 09 August 2026</p>
+            <button onclick="openInvitation()" class="mt-4 px-6 py-2 bg-stone-100 text-stone-900 font-semibold text-xs uppercase tracking-widest rounded shadow-lg hover:bg-stone-200 transition-colors cursor-pointer">
+                Open Invitation
+            </button>
         </div>
+    </div>
 
-        <div class="border border-gray-900/20 p-4 md:p-6 flex flex-col items-center text-center space-y-6">
+    <!-- BACKGROUND MUSIC PLAYER -->
+    <div class="fixed bottom-4 right-4 z-40">
+        <button id="music-btn" onclick="toggleMusic()" class="hidden p-3 bg-white/80 backdrop-blur-md border border-stone-300 text-stone-800 rounded-full shadow-lg hover:bg-white transition-all text-xs focus:outline-none">
+            🎵 Play Music
+        </button>
+        <!-- Place an audio file named music.mp3 next to index.html to activate -->
+        <audio id="bg-audio" src="music.mp3" loop></audio>
+    </div>
+
+    <!-- MAIN INVITATION CONTENT wrapper (Hidden until user clicks open) -->
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000 max-w-2xl mx-auto px-4 py-12 md:py-20 space-y-16">
+
+        <!-- CARD 1: THE TRADITIONAL INVITATION LAYOUT -->
+        <main class="relative bg-white px-6 py-12 md:px-12 md:py-16 shadow-xl border-4 border-double border-stone-900 transition-all">
             
-            <header class="space-y-2 max-w-md">
-                <div class="font-serif text-2xl tracking-wide font-semibold text-gray-800 leading-relaxed">
-                    ﷽
-                </div>
-                <div class="text-xs md:text-sm font-medium text-gray-700 tracking-wide leading-relaxed">
-                    وَخَلَقْنَاكُمْ أَزْوَاجًا
-                </div>
-                <div class="text-[11px] md:text-xs text-gray-600 tracking-normal max-w-sm mx-auto leading-relaxed">
-                    بَارَكَ اللهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
-                </div>
-            </header>
-
-            <section class="space-y-1">
-                <h1 class="text-sm md:text-base font-bold tracking-wider uppercase text-gray-900 font-['Playfair_Display']">
-                    Mr. Saleemuddin & Mrs. Athiya Begum
-                </h1>
-                <p class="text-[11px] md:text-xs tracking-widest text-gray-500 uppercase font-semibold">
-                    Together with our family and loved ones we invite you<br>to the wedding of our beloved daughter
-                </p>
-            </section>
-
-            <section class="space-y-2">
-                <h2 class="text-3xl md:text-4xl font-normal tracking-wide text-gray-900 font-['Playfair_Display']">
-                    Mizba
-                </h2>
-                <div class="text-[10px] md:text-xs tracking-wide text-gray-600 uppercase space-y-0.5">
-                    <p>Paternal Grand D/O Late Haji, Ameeruddin Sahib,</p>
-                    <p>Maternal Grand D/O Late Usman Ali Khan Sahib</p>
-                </div>
-            </section>
-
-            <div class="text-xs italic font-medium tracking-widest text-gray-500 my-1 font-['Playfair_Display']">
-                weds
+            <!-- Corner Floral Artwork SVG -->
+            <div class="absolute top-2 right-2 w-24 h-24 pointer-events-none opacity-80">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-none stroke-stone-900 stroke-[1.5]">
+                    <path d="M 60,0 C 70,20 80,30 100,40 M 75,0 C 80,15 85,20 100,25" />
+                    <circle cx="75" cy="25" r="2.5" class="fill-stone-900"/>
+                    <path d="M 65,15 C 55,30 60,45 75,50 C 70,35 70,20 65,15 Z" class="fill-stone-50"/>
+                </svg>
             </div>
 
-            <section class="space-y-2">
-                <h2 class="text-3xl md:text-4xl font-normal tracking-wide text-gray-900 font-['Playfair_Display']">
-                    Mohammed Shahid
-                </h2>
-                <div class="text-[10px] md:text-xs tracking-wide text-gray-600 uppercase space-y-0.5 max-w-md">
-                    <p>S/O Mr. Shareef P.V (Central Store) &</p>
-                    <p>Mrs. Haseena T</p>
-                </div>
-            </section>
-
-            <div class="text-sm font-semibold text-gray-800 tracking-wide my-1">
-                إِنْ شَاءَ ٱللَّٰهُ
-            </div>
-
-            <section class="w-full max-w-xs border-t border-b border-gray-900/30 py-4 my-2">
-                <h3 class="text-xs md:text-sm font-bold tracking-widest uppercase text-gray-900 mb-2">
-                    Nikah & Valima On
-                </h3>
+            <!-- Inner Canvas Container -->
+            <div class="border border-stone-900/20 p-4 md:p-6 flex flex-col items-center text-center space-y-6">
                 
-                <div class="flex items-center justify-center space-x-4">
-                    <div class="text-center">
-                        <span class="block text-4xl md:text-5xl font-light font-['Playfair_Display'] text-gray-900">09</span>
-                        <span class="block text-[10px] md:text-xs tracking-widest uppercase font-bold text-gray-600">Sunday</span>
+                <!-- Bismillah Blessings -->
+                <header class="space-y-1">
+                    <div class="text-2xl font-serif text-stone-900">﷽</div>
+                    <div class="text-xs font-semibold tracking-wider text-stone-700">وَخَلَقْنَاكُمْ أَزْوَاجًا</div>
+                    <div class="text-[10px] text-stone-500">بَارَكَ اللهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</div>
+                </header>
+
+                <!-- Hosts -->
+                <section class="space-y-1">
+                    <h2 class="text-xs md:text-sm font-bold tracking-widest uppercase text-stone-900 font-['Cinzel']">
+                        Mr. Saleemuddin & Mrs. Athiya Begum
+                    </h2>
+                    <p class="text-[10px] md:text-xs tracking-wider text-stone-500 uppercase leading-relaxed font-light">
+                        Together with our family and loved ones we invite you<br>to the wedding of our beloved daughter
+                    </p>
+                </section>
+
+                <!-- Bride -->
+                <section class="space-y-1">
+                    <h3 class="text-3xl md:text-4xl font-normal tracking-wide text-stone-900 font-['Playfair_Display']">Mizba</h3>
+                    <p class="text-[9px] md:text-[11px] tracking-wide text-stone-500 uppercase">Paternal Grand D/O Late Haji, Ameeruddin Sahib,<br>Maternal Grand D/O Late Usman Ali Khan Sahib</p>
+                </section>
+
+                <div class="text-xs italic tracking-widest text-stone-400 font-['Playfair_Display']">weds</div>
+
+                <!-- Groom -->
+                <section class="space-y-1">
+                    <h3 class="text-3xl md:text-4xl font-normal tracking-wide text-stone-900 font-['Playfair_Display']">Mohammed Shahid</h3>
+                    <p class="text-[9px] md:text-[11px] tracking-wide text-stone-500 uppercase">S/O Mr. Shareef P.V (Central Store) & <br>Mrs. Haseena T</p>
+                </section>
+
+                <div class="text-xs font-semibold text-stone-700">إِنْ شَاءَ ٱللَّٰهُ</div>
+
+                <!-- Date Breakdown Panel -->
+                <section class="w-full max-w-xs border-t border-b border-stone-900/20 py-4 my-2">
+                    <h4 class="text-xs font-bold tracking-widest uppercase text-stone-900 mb-2">Nikah & Valima On</h4>
+                    <div class="flex items-center justify-center space-x-4">
+                        <div class="text-center">
+                            <span class="block text-4xl font-light font-['Playfair_Display'] text-stone-900">09</span>
+                            <span class="block text-[10px] uppercase font-bold text-stone-500">Sunday</span>
+                        </div>
+                        <div class="h-8 w-[1px] bg-stone-300"></div>
+                        <div class="text-left">
+                            <span class="block text-xs font-bold tracking-widest uppercase text-stone-900">August</span>
+                            <span class="block text-xl font-light font-['Playfair_Display'] text-stone-900">2026</span>
+                        </div>
                     </div>
-                    <div class="h-10 w-[1px] bg-gray-400 border-dashed border-l"></div>
-                    <div class="text-left">
-                        <span class="block text-sm md:text-base font-bold tracking-widest uppercase text-gray-900">August</span>
-                        <span class="block text-xl md:text-2xl font-light font-['Playfair_Display'] text-gray-900">2026</span>
+                    <div class="text-[9px] tracking-wide text-stone-400 mt-2 uppercase">(25 Safar , 1448Hijri)</div>
+                </section>
+
+                <!-- Time Details -->
+                <section class="space-y-3">
+                    <div>
+                        <p class="text-xs md:text-sm font-bold tracking-wider text-stone-900 uppercase">Nikah @ 11.30 AM</p>
+                        <p class="text-[10px] tracking-widest text-stone-500 uppercase font-light">Followed by Lunch</p>
                     </div>
-                </div>
+                    <div class="space-y-0.5 max-w-xs mx-auto text-xs">
+                        <span class="block text-[9px] font-bold text-stone-400 uppercase tracking-widest">Venue:</span>
+                        <p class="font-bold text-stone-900 uppercase font-['Playfair_Display']">Shanthi Radhakrishnan Thirumana Maligai,</p>
+                        <p class="text-stone-700 uppercase font-light">Old Suramangalam, Salem</p>
+                    </div>
+                </section>
 
-                <div class="text-[10px] font-medium tracking-wide text-gray-500 mt-2 uppercase">
-                    (25 Safar , 1448Hijri)
-                </div>
-            </section>
+                <footer class="pt-4 border-t border-stone-100 w-full text-[9px] tracking-widest text-stone-400 uppercase">
+                    Best Compliments From <br>
+                    <span class="text-stone-800 font-semibold">Friends & Relatives</span>
+                </footer>
+            </div>
+        </main>
 
-            <section class="space-y-4 w-full">
-                <div class="space-y-0.5">
-                    <p class="text-xs md:text-sm font-bold tracking-wider text-gray-900 uppercase">
-                        Nikah @ 11.30 AM
-                    </p>
-                    <p class="text-[10px] md:text-xs tracking-widest text-gray-500 uppercase font-medium">
-                        Followed by Lunch
-                    </p>
-                </div>
+        <!-- CARD 2: DIGITAL ENHANCEMENTS (Google Maps & RSVP Section) -->
+        <section class="fade-in-section bg-white p-6 md:p-8 shadow-xl border border-stone-200 rounded-lg text-center space-y-6">
+            <h3 class="font-['Cinzel'] text-xl tracking-wider text-stone-900 font-semibold">Location & Navigation</h3>
+            <p class="text-xs text-stone-500 px-4">Click below to open the official venue destination routes inside Google Maps application directly.</p>
+            
+            <!-- Google Maps Button -->
+            <div class="py-2">
+                <a href="https://maps.google.com/?q=Shanthi+Radhakrishnan+Thirumana+Maligai+Old+Suramangalam+Salem" target="_blank" class="inline-flex items-center space-x-2 px-6 py-3 bg-stone-900 text-white rounded text-xs uppercase tracking-widest font-semibold hover:bg-stone-800 transition-colors shadow">
+                    📍 Open Venue Location Map
+                </a>
+            </div>
 
-                <div class="space-y-1 max-w-sm mx-auto">
-                    <span class="block text-[10px] md:text-xs font-bold tracking-widest text-gray-400 uppercase">Venue:</span>
-                    <p class="text-xs md:text-sm font-bold tracking-wide text-gray-900 uppercase leading-relaxed font-['Playfair_Display']">
-                        Shanthi Radhakrishnan Thirumana Maligai,
-                    </p>
-                    <p class="text-xs md:text-sm font-medium tracking-wide text-gray-800 uppercase">
-                        Old Suramangalam, Salem
-                    </p>
-                </div>
-            </section>
+            <hr class="border-stone-100 my-4">
 
-            <footer class="pt-4 border-t border-gray-100 w-full text-[10px] md:text-xs tracking-widest text-gray-500 uppercase font-medium">
-                Best Compliments From <br>
-                <span class="text-gray-800 font-semibold">Friends & Relatives</span>
-            </footer>
+            <!-- RSVP Note -->
+            <div class="space-y-2">
+                <h4 class="font-['Playfair_Display'] text-lg italic text-stone-800">We await your presence</h4>
+                <p class="text-xs text-stone-500 leading-relaxed max-w-sm mx-auto">Your presence and prayers at our ceremony are the greatest blessings we could ask for.</p>
+            </div>
+        </section>
 
-        </div>
-    </main>
+    </div>
 
+    <!-- JavaScript For Interactivity -->
+    <script>
+        // 1. Unveil the invitation content when the cover envelope button is clicked
+        function openInvitation() {
+            const welcome = document.getElementById('welcome-screen');
+            const mainContent = document.getElementById('main-content');
+            const musicBtn = document.getElementById('music-btn');
+
+            welcome.classList.add('opacity-0', 'pointer-events-none');
+            mainContent.classList.remove('opacity-0');
+            mainContent.classList.add('opacity-100');
+            musicBtn.classList.remove('hidden');
+
+            // Auto attempt to start playing the theme track safely
+            toggleMusic(true);
+        }
+
+        // 2. Control background theme song playback
+        const audio = document.getElementById('bg-audio');
+        const musicBtn = document.getElementById('music-btn');
+        let isPlaying = false;
+
+        function toggleMusic(forcePlay = false) {
+            if (!isPlaying || forcePlay) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    musicBtn.innerText = "⏸ Pause Music";
+                }).catch(err => console.log("Audio autoplay prevented by browser safety restrictions"));
+            } else {
+                audio.pause();
+                isPlaying = false;
+                musicBtn.innerText = "🎵 Play Music";
+            }
+        }
+
+        // 3. Simple Intersection Observer to fade sections smoothly into view as the user scrolls
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
 </body>
 </html>
